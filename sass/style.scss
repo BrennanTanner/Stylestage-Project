@@ -1,7 +1,7 @@
 $monitor-height: 100vh;
 // $monitor-width: 100%;
 $monitor-width: $monitor-height * 1.33;
-//$monitor-margin: (100vw - $monitor-width) / 2;
+// $monitor-margin: (100vw - $monitor-width) / 2;
 
 @font-face {
 	font-family: "Eagle";
@@ -26,7 +26,10 @@ body {
 }
 
 section,
-footer {
+header > div,
+main footer,
+aside > div,
+body > footer {
 	position: relative;
 	height: $monitor-height;
 	width: $monitor-width;
@@ -67,19 +70,18 @@ footer {
 		// Green scan bar.
 		content: "";
 		display: block;
-		width: 100vw;
+		width: $monitor-width;
+		margin: 0 auto;
 		height: 100px;
 		background: linear-gradient(
 			0deg,
 			rgba(0, 0, 0, 0) 0%,
-			rgba(0, 153, 0, 0.28) 50%,
+			rgba(0, 153, 0, 0.15) 50%,
 			rgba(0, 0, 0, 0) 100%
 		);
 
-		position: fixed;
+		position: absolute;
 		top: 0;
-		left: 0;
-		right: 0;
 
 		pointer-events: none;
 		z-index: 9;
@@ -215,9 +217,7 @@ h2 {
 	width: 0px;
 }
 
-header,
 nav,
-aside,
 .link-github,
 .skip-link {
    display: none;
@@ -234,6 +234,17 @@ article {
    display: flex;
    overflow-x: scroll;
    width: fit-content;
+}
+
+body {
+	display: grid;
+	grid-template-columns: 100vw 600vw 100vw 100vw 100vw;
+}
+
+header {
+	display: grid;
+	grid-template-columns: 100vw;
+	grid-template-rows: 100vh;
 }
 
 #about {

@@ -17,7 +17,10 @@ body {
 }
 
 section,
-footer {
+header > div,
+main footer,
+aside > div,
+body > footer {
   position: relative;
   height: 100vh;
   width: 133vh;
@@ -32,7 +35,10 @@ footer {
   overflow-y: scroll;
 }
 section::before,
-footer::before {
+header > div::before,
+main footer::before,
+aside > div::before,
+body > footer::before {
   content: "";
   display: block;
   pointer-events: none;
@@ -45,27 +51,35 @@ footer::before {
   background-repeat: no-repeat;
 }
 section::after,
-footer::after {
+header > div::after,
+main footer::after,
+aside > div::after,
+body > footer::after {
   content: "";
   display: block;
-  width: 100vw;
+  width: 133vh;
+  margin: 0 auto;
   height: 100px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 153, 0, 0.28) 50%, rgba(0, 0, 0, 0) 100%);
-  position: fixed;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 153, 0, 0.15) 50%, rgba(0, 0, 0, 0) 100%);
+  position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
   pointer-events: none;
   z-index: 9;
   animation: bar 18s infinite;
   animation-timing-function: linear;
 }
 section > p,
-footer > p {
+header > div > p,
+main footer > p,
+aside > div > p,
+body > footer > p {
   padding: 0 3.5%;
 }
 section a,
-footer a {
+header > div a,
+main footer a,
+aside > div a,
+body > footer a {
   color: #00ffc0;
   text-shadow: 0 0 5px #a0a0a0;
 }
@@ -168,9 +182,7 @@ h2 {
   width: 0px;
 }
 
-header,
 nav,
-aside,
 .link-github,
 .skip-link {
   display: none;
@@ -184,6 +196,17 @@ article {
   overflow-x: scroll;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 100vw 600vw 100vw 100vw 100vw;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: 100vh;
 }
 
 #about {
