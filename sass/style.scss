@@ -11,6 +11,7 @@ $text-color: #009900;
 	src: url("https://frindestown.duckdns.org/fonts/Web437_EagleSpCGA_Alt3.woff")
 		format("woff");
 }
+
 @font-face {
 	font-family: "WebPlus";
 	src: url("https://frindestown.duckdns.org/fonts/WebPlus_IBM_VGA_8x16.woff")
@@ -38,7 +39,7 @@ html {
 }
 
 body {
-	font-family: "WebPlus_IBM_VGA_8x16", Inconsolata, monospace;
+	font-family: "WebPlus", Inconsolata, monospace;
 	color: $text-color;
 	overflow-x: scroll;
 	margin: 0;
@@ -50,8 +51,6 @@ main footer,
 aside > div,
 body > footer > div {
 	// scroll-snap-align: center;
-
-	position: relative;
 	height: $monitor-height;
 	width: $monitor-width;
 	margin: 0 auto;
@@ -64,12 +63,8 @@ body > footer > div {
 		black 100%
 	);
 
-	font-family: "WebPlus", Inconsolata, monospace;
-	font-size: 24px;
 	text-shadow: 0 0 5px #707070;
 	animation: textShadow 0.15s infinite;
-
-	overflow-y: scroll;
 
 	// Make it cover the entire screen without being interactible.
 	&::before {
@@ -77,14 +72,15 @@ body > footer > div {
 		display: block;
 		pointer-events: none;
 		z-index: 10;
-		position: absolute;
-		height: 100%;
+		position: sticky;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		height: $monitor-height;
 		width: $monitor-width;
 		background-size: 100% 100%;
-		background-color: blue;
 		background-image: url("https://github.com/Chafalleiro/retromator/blob/main/img/crt_green_mask.png?raw=true");
-		//background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cdefs%3E%3CradialGradient%20id%3D%27radial-gradient%27%20cx%3D%27623.96%27%20cy%3D%27375%27%20r%3D%27818.74%27%20fx%3D%27795.96%27%20fy%3D%27625.84%27%20gradientTransform%3D%27rotate%28-.61%2024.1%20236.31%29%20scale%281.63%29%27%20gradientUnits%3D%27userSpaceOnUse%27%3E%3Cstop%20offset%3D%27.39%27%20stop-color%3D%27%23fff%27%20stop-opacity%3D%270%27%2F%3E%3Cstop%20offset%3D%27.49%27%20stop-color%3D%27%23fff%27%20stop-opacity%3D%270%27%2F%3E%3Cstop%20offset%3D%27.69%27%20stop-color%3D%27%23b6b9c0%27%20stop-opacity%3D%27.37%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23394253%27%2F%3E%3C%2FradialGradient%3E%3Cstyle%3E.screen%7Bfill%3Aurl%28%23radial-gradient%29%7D.inner%2C.outer%2C.screen%7Bstroke-width%3A0%7D.outer%7Bfill%3A%23e0ded4%7D.inner%7Bfill%3A%23d5d0bd%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%27Layer_1-2%27%20data-name%3D%27Layer1%27%3E%3Cpath%20d%3D%27M0%200v750.78h1247.92V0H0Zm1207.16%20715.39c-11.58%2016.36-1141.76%2020.13-1165.26.68-15.22-12.59-18.75-659.5-.14-680.75%2017.08-19.5%201152.19-15.77%201165.26%201.08%2015.62%2020.14%2015.89%20656.74.14%20678.99Z%27%20class%3D%27outer%27%2F%3E%3Cpath%20d%3D%27M575.98%20735.91c-141.19%200-270.37-1.12-363.74-3.15-165.15-3.59-171.21-8.61-174.83-11.6-3.04-2.52-5.22-6.44-7.65-36.78-5.06-63.15-8.19-214.35-7.61-367.69.29-76.15%201.48-142.32%203.45-191.36%203.47-86.47%208.11-91.76%2010.88-94.92%202.48-2.83%204.83-5.51%2053.04-8.27%2027.99-1.61%2067.87-2.99%20118.52-4.1%2092.44-2.04%20220.76-3.16%20361.32-3.16%20155.98%200%20313%201.37%20430.81%203.75%2062.71%201.27%20112.35%202.78%20147.53%204.48%2060.35%202.92%2062.33%205.48%2064.84%208.71%202.43%203.13%206.94%208.95%2010.29%20115.53%201.92%2060.92%202.98%20141.7%203.01%20227.46.03%2085.85-1%20166.77-2.88%20227.86-3.29%20106.86-7.9%20113.35-10.11%20116.48-2.24%203.16-5.65%204.47-21.46%206.01-9.85.96-24.12%201.89-42.42%202.76-34.69%201.65-83.71%203.12-145.69%204.35-116.73%202.32-272.47%203.66-427.28%203.66Z%27%20class%3D%27screen%27%2F%3E%3Cpath%20d%3D%27M569.36%2021.87c305.21%200%20630.68%205.25%20637.64%2014.23%2015.62%2020.14%2015.89%20656.74.14%20678.99-6.15%208.68-327.49%2013.82-631.15%2013.82-268.46%200-523.09-4.01-534.12-13.14-15.22-12.59-18.75-659.5-.14-680.75%207.98-9.11%20260.03-13.15%20527.62-13.15m.06-14v14l-.03-14c-140.65%200-269.02%201.12-361.51%203.16-50.74%201.12-90.7%202.5-118.77%204.11-14.98.86-26.78%201.8-35.06%202.79-12.09%201.45-18.59%203-22.85%207.86-3.93%204.49-6.36%2011.23-8.73%2035.65-1.49%2015.37-2.8%2036.77-3.87%2063.6-1.97%2049.12-3.17%20115.38-3.45%20191.61-.58%20153.52%202.56%20304.96%207.64%20368.28a322.4%20322.4%200%200%200%202.55%2023.54c1.35%208.58%203.03%2014.29%207.61%2018.08%203.96%203.28%209.41%204.81%2022.43%206.31%208.62.99%2020.75%201.93%2036.07%202.79%2028.72%201.61%2069.31%202.99%20120.64%204.11%2093.42%202.03%20222.66%203.15%20363.9%203.15%20154.86%200%20310.65-1.33%20427.42-3.66%2062.05-1.24%20111.13-2.7%20145.89-4.36%2018.41-.88%2032.8-1.81%2042.77-2.79%2015.07-1.47%2022.13-2.76%2026.5-8.93%202.89-4.08%205.29-9.74%207.69-41.78%201.44-19.12%202.68-45.54%203.7-78.53%201.89-61.15%202.91-142.15%202.88-228.08-.03-85.83-1.1-166.69-3.01-227.68-1.03-32.84-2.29-59.1-3.72-78.04-2.44-32.11-4.87-37.48-8.04-41.57-4.25-5.48-10.36-6.94-26.57-8.54-10.15-1-24.78-1.97-43.46-2.87-35.24-1.71-84.93-3.22-147.71-4.49-117.84-2.38-274.9-3.75-430.9-3.75Z%27%20class%3D%27inner%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-
 		background-repeat: no-repeat;
 	}
 
@@ -122,12 +118,14 @@ body > footer > div {
 	> h3,
 	> h4 {
 		padding: 10px $monitor-content-padding;
-		text-wrap: wrap;
 	}
 
-	a {
-		color: #00ffc0;
-		text-shadow: 0 0 5px #a0a0a0;
+	> :first-child {
+		margin-top: -96vh;
+	}
+
+	> :last-child {
+		padding-bottom: 30px;
 	}
 }
 
@@ -138,7 +136,6 @@ h4 {
 	font-family: "Eagle", Inconsolata, monospace;
 	font-weight: normal;
 	text-align: center;
-	font-size: 1.2em;
 	padding-top: 15px;
 }
 
@@ -151,10 +148,10 @@ h4 {
 
 @keyframes bar {
 	0% {
-		top: -200%;
+		top: -300%;
 	}
 	100% {
-		top: 100vh;
+		top: 100%;
 	}
 }
 
@@ -275,24 +272,31 @@ ol {
 }
 
 p,
-a {
+a,
+li {
 	font-size: var(--step-0);
 }
 
 h1 {
-	font-size: var(--step-3);
+	font-size: var(--step-4);
 }
 
 h2 {
-	font-size: var(--step-2);
+	font-size: var(--step-3);
 }
 
 h3 {
-	font-size: var(--step-1);
+	font-size: var(--step-2);
 }
 
 h4 {
-	font-size: var(--step-0);
+	font-size: var(--step-1);
+}
+
+a {
+	color: #00ffc0;
+	text-shadow: 0 0 5px #707070;
+	animation: textShadow 0.15s infinite;
 }
 
 main footer a {
@@ -321,19 +325,15 @@ header,
 }
 
 body {
-	grid-template-columns: $section-width ($section-width * 6) $section-width $section-width $section-width;
+	grid-template-columns: $section-width ($section-width * 6) repeat(3, $section-width);
 }
 
 header {
 	grid-template-columns: $section-width;
-
-	h2 {
-		font-size: var(--step-1);
-	}
 }
 
 #about {
-	grid-template-columns: $section-width $section-width;
+	grid-template-columns: repeat(2, $section-width);
 }
 
 #guidelines {
@@ -341,9 +341,10 @@ header {
 }
 
 #contribute {
-	grid-template-columns: $section-width $section-width $section-width;
+	grid-template-columns: repeat(3, $section-width);
 }
 
-body > footer > div p:first-of-type {
-	padding-top: 10px;
-}
+// Fix the extra space.
+// h1 {
+// 	margin-top: -96vh;
+// }

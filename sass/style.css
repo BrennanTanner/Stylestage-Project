@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  font-family: "WebPlus_IBM_VGA_8x16", Inconsolata, monospace;
+  font-family: "WebPlus", Inconsolata, monospace;
   color: #009900;
   overflow-x: scroll;
   margin: 0;
@@ -37,18 +37,14 @@ header > div,
 main footer,
 aside > div,
 body > footer > div {
-  position: relative;
   height: 100vh;
   width: min(100vw, 133vh);
   margin: 0 auto;
   overflow-x: hidden;
   background-color: black;
   background-image: radial-gradient(200% 250% at center, rgba(0, 50, 50, 0.75), black 100%);
-  font-family: "WebPlus", Inconsolata, monospace;
-  font-size: 24px;
   text-shadow: 0 0 5px #707070;
   animation: textShadow 0.15s infinite;
-  overflow-y: scroll;
 }
 section::before,
 header > div::before,
@@ -59,11 +55,14 @@ body > footer > div::before {
   display: block;
   pointer-events: none;
   z-index: 10;
-  position: absolute;
-  height: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
   width: min(100vw, 133vh);
   background-size: 100% 100%;
-  background-color: blue;
   background-image: url("https://github.com/Chafalleiro/retromator/blob/main/img/crt_green_mask.png?raw=true");
   background-repeat: no-repeat;
 }
@@ -118,15 +117,20 @@ body > footer > div > h2,
 body > footer > div > h3,
 body > footer > div > h4 {
   padding: 10px max(4%, 20px);
-  text-wrap: wrap;
 }
-section a,
-header > div a,
-main footer a,
-aside > div a,
-body > footer > div a {
-  color: #00ffc0;
-  text-shadow: 0 0 5px #a0a0a0;
+section > :first-child,
+header > div > :first-child,
+main footer > :first-child,
+aside > div > :first-child,
+body > footer > div > :first-child {
+  margin-top: -96vh;
+}
+section > :last-child,
+header > div > :last-child,
+main footer > :last-child,
+aside > div > :last-child,
+body > footer > div > :last-child {
+  padding-bottom: 30px;
 }
 
 h1,
@@ -136,14 +140,7 @@ h4 {
   font-family: "Eagle", Inconsolata, monospace;
   font-weight: normal;
   text-align: center;
-  font-size: 1.2em;
   padding-top: 15px;
-}
-
-::-moz-selection {
-  color: #00f0f0;
-  background: #008008;
-  text-shadow: none;
 }
 
 ::selection {
@@ -154,10 +151,10 @@ h4 {
 
 @keyframes bar {
   0% {
-    top: -200%;
+    top: -300%;
   }
   100% {
-    top: 100vh;
+    top: 100%;
   }
 }
 @keyframes textShadow {
@@ -252,24 +249,31 @@ ol {
 }
 
 p,
-a {
+a,
+li {
   font-size: var(--step-0);
 }
 
 h1 {
-  font-size: var(--step-3);
+  font-size: var(--step-4);
 }
 
 h2 {
-  font-size: var(--step-2);
+  font-size: var(--step-3);
 }
 
 h3 {
-  font-size: var(--step-1);
+  font-size: var(--step-2);
 }
 
 h4 {
-  font-size: var(--step-0);
+  font-size: var(--step-1);
+}
+
+a {
+  color: #00ffc0;
+  text-shadow: 0 0 5px #707070;
+  animation: textShadow 0.15s infinite;
 }
 
 main footer a {
@@ -284,7 +288,6 @@ main > .container,
 article {
   display: flex;
   overflow-x: scroll;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -298,18 +301,15 @@ header,
 }
 
 body {
-  grid-template-columns: 100vw 600vw 100vw 100vw 100vw;
+  grid-template-columns: 100vw 600vw repeat(3, 100vw);
 }
 
 header {
   grid-template-columns: 100vw;
 }
-header h2 {
-  font-size: var(--step-1);
-}
 
 #about {
-  grid-template-columns: 100vw 100vw;
+  grid-template-columns: repeat(2, 100vw);
 }
 
 #guidelines {
@@ -317,9 +317,7 @@ header h2 {
 }
 
 #contribute {
-  grid-template-columns: 100vw 100vw 100vw;
+  grid-template-columns: repeat(3, 100vw);
 }
 
-body > footer > div p:first-of-type {
-  padding-top: 10px;
-}/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css.map */
