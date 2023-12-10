@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300&family=Silkscreen&display=swap');
+
 @font-face {
   font-family: "Eagle";
   src: url("https://frindestown.duckdns.org/fonts/Web437_EagleSpCGA_Alt3.woff") format("woff");
@@ -14,14 +16,13 @@ body {
   font-family: "WebPlus_IBM_VGA_8x16", Inconsolata, monospace;
   color: #009900;
   overflow-x: scroll;
-  margin: 0;
 }
 
 section,
 header > div,
 main footer,
 aside > div,
-body > footer > div {
+body > footer {
   position: relative;
   height: 100vh;
   width: 133vh;
@@ -39,7 +40,7 @@ section::before,
 header > div::before,
 main footer::before,
 aside > div::before,
-body > footer > div::before {
+body > footer::before {
   content: "";
   display: block;
   pointer-events: none;
@@ -55,7 +56,7 @@ section::after,
 header > div::after,
 main footer::after,
 aside > div::after,
-body > footer > div::after {
+body > footer::after {
   content: "";
   display: block;
   width: 133vh;
@@ -70,52 +71,23 @@ body > footer > div::after {
   animation-timing-function: linear;
 }
 section > p,
-section > a,
 header > div > p,
-header > div > a,
 main footer > p,
-main footer > a,
 aside > div > p,
-aside > div > a,
-body > footer > div > p,
-body > footer > div > a {
+body > footer > p {
   padding: 0 3.5%;
-}
-section > h1,
-section > h2,
-section > h3,
-section > h4,
-header > div > h1,
-header > div > h2,
-header > div > h3,
-header > div > h4,
-main footer > h1,
-main footer > h2,
-main footer > h3,
-main footer > h4,
-aside > div > h1,
-aside > div > h2,
-aside > div > h3,
-aside > div > h4,
-body > footer > div > h1,
-body > footer > div > h2,
-body > footer > div > h3,
-body > footer > div > h4 {
-  padding: 10px 3.5%;
 }
 section a,
 header > div a,
 main footer a,
 aside > div a,
-body > footer > div a {
+body > footer a {
   color: #00ffc0;
   text-shadow: 0 0 5px #a0a0a0;
 }
 
 h1,
-h2,
-h3,
-h4 {
+h2 {
   font-family: "Eagle", Inconsolata, monospace;
   font-weight: normal;
   text-align: center;
@@ -204,33 +176,11 @@ h4 {
 }
 ::-webkit-scrollbar {
   width: 0px;
-  height: 0px;
 }
-
 
 .link-github,
-
 .skip-link {
   display: none;
-}
-
-div > .link-github {
-  padding: 0 3.5%;
-}
-
-svg {
-  height: 1em;
-}
-
-ul,
-ol {
-  padding-inline-start: calc(3.5% + 40px);
-}
-
-main footer a {
-  display: block;
-  padding-left: 3.5%;
-  padding-top: 7px;
 }
 
 body,
@@ -242,35 +192,87 @@ article {
   width: fit-content;
 }
 
-body,
-header,
-#about,
-#guidelines,
-#contribute {
-  display: grid;
-  grid-template-rows: 100vh;
-}
-
 body {
+  display: grid;
   grid-template-columns: 100vw 600vw 100vw 100vw 100vw;
 }
 
 header {
+  display: grid;
   grid-template-columns: 100vw;
+  grid-template-rows: 100vh;
 }
 
 #about {
+  display: grid;
   grid-template-columns: 100vw 100vw;
+  grid-template-rows: 100vh;
 }
 
 #guidelines {
+  display: grid;
   grid-template-columns: 100vw;
+  grid-template-rows: 100vh;
 }
 
 #contribute {
+  display: grid;
   grid-template-columns: 100vw 100vw 100vw;
   grid-template-rows: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */
 
+
+
+/* */
+
+/* nav{
+  display: none;
+} */
+
+
+nav{
+  top: 7em;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  z-index: 1;
+  margin-left: -14em;
+}
+nav ul li{
+  width: 9em;
+  height: 3em;
+  list-style: none;
+  padding: 1em;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  font-family: 'Recursive', sans-serif;
+  font-family: 'Silkscreen', sans-serif;
+  font-size: 2em;
+}
+
+nav ul li:hover{
+  /* background-color:  #009900; */
+  opacity: .4;
+  transition: .2s;
+}
+
+nav ul li a:visited,
+nav ul li a:active,
+nav ul li a:link
+{
+  text-decoration: none;
+  color: #009900;
+}
+
+/* mobile view */ 
+@media screen and (max-width:700 ){
+
+  body > *{
+    display: flex;
+    flex-direction: column-reverse
+
+  }
+}
