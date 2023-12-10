@@ -2,6 +2,8 @@ $monitor-height: 100vh;
 // $monitor-width: 100%;
 $monitor-width: $monitor-height * 1.33;
 // $monitor-margin: (100vw - $monitor-width) / 2;
+$monitor-content-padding: 3.5%;
+$section-width: 100vw;
 
 @font-face {
 	font-family: "Eagle";
@@ -19,17 +21,18 @@ $monitor-width: $monitor-height * 1.33;
 }
 
 body {
-	//overflow-y: hidden;
+	// overflow-y: hidden;
 	font-family: "WebPlus_IBM_VGA_8x16", Inconsolata, monospace;
 	color: #009900;
-   overflow-x: scroll;
+	overflow-x: scroll;
+	margin: 0;
 }
 
 section,
 header > div,
 main footer,
 aside > div,
-body > footer {
+body > footer > div {
 	position: relative;
 	height: $monitor-height;
 	width: $monitor-width;
@@ -90,8 +93,16 @@ body > footer {
 		animation-timing-function: linear;
 	}
 
-	> p {
-		padding: 0 3.5%;
+	> p,
+	> a {
+		padding: 0 $monitor-content-padding;
+	}
+
+	> h1,
+	> h2,
+	> h3,
+	> h4 {
+		padding: 10px $monitor-content-padding;
 	}
 
 	a {
@@ -101,7 +112,9 @@ body > footer {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
 	font-family: "Eagle", Inconsolata, monospace;
 	font-weight: normal;
 	text-align: center;
@@ -215,18 +228,36 @@ h2 {
 // Scrollbar
 ::-webkit-scrollbar {
 	width: 0px;
+	height: 0px;
 }
 
 nav,
-.link-github,
 .skip-link {
    display: none;
 }
 
+// Fix github link
+div > .link-github {
+	padding: 0 $monitor-content-padding;
+}
 
-// Swap to grid.
-// You'll have to set it individually for each one. Likely with a bunch of nth's
-// It should work though.
+svg {
+	height: 1em;
+}
+
+ul,
+ol {
+	padding-inline-start: calc($monitor-content-padding + 40px);
+}
+
+main footer a {
+	display: block;
+	padding-left: $monitor-content-padding;
+	padding-top: 7px;
+}
+
+
+// Set up each monitor
 body,
 main,
 main > .container,
@@ -236,31 +267,35 @@ article {
    width: fit-content;
 }
 
-body {
+body,
+header,
+#about,
+#guidelines,
+#contribute {
 	display: grid;
-	grid-template-columns: 100vw 600vw 100vw 100vw 100vw;
+	grid-template-rows: 100vh;
+}
+
+body {
+	grid-template-columns: $section-width ($section-width * 6) $section-width $section-width $section-width;
 }
 
 header {
-	display: grid;
-	grid-template-columns: 100vw;
-	grid-template-rows: 100vh;
+	grid-template-columns: $section-width;
 }
 
 #about {
-	display: grid;
-	grid-template-columns: 100vw 100vw;
-	grid-template-rows: 100vh;
+	grid-template-columns: $section-width $section-width;
 }
 
 #guidelines {
-	display: grid;
-	grid-template-columns: 100vw;
-	grid-template-rows: 100vh;
+	grid-template-columns: $section-width;
 }
 
 #contribute {
-	display: grid;
-	grid-template-columns: 100vw 100vw 100vw;
-	grid-template-rows: 100vh;
+	grid-template-columns: $section-width $section-width $section-width;
+}
+
+body > footer > div p:first-of-type {
+	padding-top: 10px;
 }

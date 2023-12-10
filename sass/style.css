@@ -14,13 +14,14 @@ body {
   font-family: "WebPlus_IBM_VGA_8x16", Inconsolata, monospace;
   color: #009900;
   overflow-x: scroll;
+  margin: 0;
 }
 
 section,
 header > div,
 main footer,
 aside > div,
-body > footer {
+body > footer > div {
   position: relative;
   height: 100vh;
   width: 133vh;
@@ -38,7 +39,7 @@ section::before,
 header > div::before,
 main footer::before,
 aside > div::before,
-body > footer::before {
+body > footer > div::before {
   content: "";
   display: block;
   pointer-events: none;
@@ -54,7 +55,7 @@ section::after,
 header > div::after,
 main footer::after,
 aside > div::after,
-body > footer::after {
+body > footer > div::after {
   content: "";
   display: block;
   width: 133vh;
@@ -69,23 +70,52 @@ body > footer::after {
   animation-timing-function: linear;
 }
 section > p,
+section > a,
 header > div > p,
+header > div > a,
 main footer > p,
+main footer > a,
 aside > div > p,
-body > footer > p {
+aside > div > a,
+body > footer > div > p,
+body > footer > div > a {
   padding: 0 3.5%;
+}
+section > h1,
+section > h2,
+section > h3,
+section > h4,
+header > div > h1,
+header > div > h2,
+header > div > h3,
+header > div > h4,
+main footer > h1,
+main footer > h2,
+main footer > h3,
+main footer > h4,
+aside > div > h1,
+aside > div > h2,
+aside > div > h3,
+aside > div > h4,
+body > footer > div > h1,
+body > footer > div > h2,
+body > footer > div > h3,
+body > footer > div > h4 {
+  padding: 10px 3.5%;
 }
 section a,
 header > div a,
 main footer a,
 aside > div a,
-body > footer a {
+body > footer > div a {
   color: #00ffc0;
   text-shadow: 0 0 5px #a0a0a0;
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
   font-family: "Eagle", Inconsolata, monospace;
   font-weight: normal;
   text-align: center;
@@ -174,11 +204,33 @@ h2 {
 }
 ::-webkit-scrollbar {
   width: 0px;
+  height: 0px;
 }
 
+
 .link-github,
+
 .skip-link {
   display: none;
+}
+
+div > .link-github {
+  padding: 0 3.5%;
+}
+
+svg {
+  height: 1em;
+}
+
+ul,
+ol {
+  padding-inline-start: calc(3.5% + 40px);
+}
+
+main footer a {
+  display: block;
+  padding-left: 3.5%;
+  padding-top: 7px;
 }
 
 body,
@@ -190,33 +242,35 @@ article {
   width: fit-content;
 }
 
-body {
+body,
+header,
+#about,
+#guidelines,
+#contribute {
   display: grid;
+  grid-template-rows: 100vh;
+}
+
+body {
   grid-template-columns: 100vw 600vw 100vw 100vw 100vw;
 }
 
 header {
-  display: grid;
   grid-template-columns: 100vw;
-  grid-template-rows: 100vh;
 }
 
 #about {
-  display: grid;
   grid-template-columns: 100vw 100vw;
-  grid-template-rows: 100vh;
 }
 
 #guidelines {
-  display: grid;
   grid-template-columns: 100vw;
-  grid-template-rows: 100vh;
 }
 
 #contribute {
-  display: grid;
   grid-template-columns: 100vw 100vw 100vw;
   grid-template-rows: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */
+
