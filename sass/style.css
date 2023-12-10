@@ -6,8 +6,23 @@
   font-family: "WebPlus";
   src: url("https://frindestown.duckdns.org/fonts/WebPlus_IBM_VGA_8x16.woff") format("woff");
 }
+:root {
+  --step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+  --step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+  --step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+  --step-2: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+  --step-3: clamp(1.9438rem, 1.7707rem + 0.8652vw, 2.4413rem);
+  --step-4: clamp(2.3325rem, 2.0823rem + 1.2511vw, 3.0519rem);
+  --step-5: clamp(2.7994rem, 2.4461rem + 1.7663vw, 3.815rem);
+}
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -24,11 +39,11 @@ aside > div,
 body > footer > div {
   position: relative;
   height: 100vh;
-  width: 133vh;
+  width: min(100vw, 133vh);
   margin: 0 auto;
+  overflow-x: hidden;
   background-color: black;
   background-image: radial-gradient(200% 250% at center, rgba(0, 50, 50, 0.75), black 100%);
-  color: #009900;
   font-family: "WebPlus", Inconsolata, monospace;
   font-size: 24px;
   text-shadow: 0 0 5px #707070;
@@ -45,9 +60,10 @@ body > footer > div::before {
   pointer-events: none;
   z-index: 10;
   position: absolute;
-  height: 100vh;
-  width: 133vh;
+  height: 100%;
+  width: min(100vw, 133vh);
   background-size: 100% 100%;
+  background-color: blue;
   background-image: url("https://github.com/Chafalleiro/retromator/blob/main/img/crt_green_mask.png?raw=true");
   background-repeat: no-repeat;
 }
@@ -58,7 +74,7 @@ aside > div::after,
 body > footer > div::after {
   content: "";
   display: block;
-  width: 133vh;
+  width: min(100vw, 133vh);
   margin: 0 auto;
   height: 100px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 153, 0, 0.15) 50%, rgba(0, 0, 0, 0) 100%);
@@ -79,7 +95,7 @@ aside > div > p,
 aside > div > a,
 body > footer > div > p,
 body > footer > div > a {
-  padding: 0 3.5%;
+  padding: 0 max(4%, 20px);
 }
 section > h1,
 section > h2,
@@ -101,7 +117,8 @@ body > footer > div > h1,
 body > footer > div > h2,
 body > footer > div > h3,
 body > footer > div > h4 {
-  padding: 10px 3.5%;
+  padding: 10px max(4%, 20px);
+  text-wrap: wrap;
 }
 section a,
 header > div a,
@@ -219,21 +236,45 @@ nav,
 }
 
 div > .link-github {
-  padding: 0 3.5%;
+  padding: 0 max(4%, 20px);
 }
 
 svg {
   height: 1em;
 }
+svg path {
+  fill: #009900;
+}
 
 ul,
 ol {
-  padding-inline-start: calc(3.5% + 40px);
+  padding-inline-start: calc(max(4%, 20px) + 40px);
+}
+
+p,
+a {
+  font-size: var(--step-0);
+}
+
+h1 {
+  font-size: var(--step-3);
+}
+
+h2 {
+  font-size: var(--step-2);
+}
+
+h3 {
+  font-size: var(--step-1);
+}
+
+h4 {
+  font-size: var(--step-0);
 }
 
 main footer a {
   display: block;
-  padding-left: 3.5%;
+  padding-left: max(4%, 20px);
   padding-top: 7px;
 }
 
@@ -262,6 +303,9 @@ body {
 
 header {
   grid-template-columns: 100vw;
+}
+header h2 {
+  font-size: var(--step-1);
 }
 
 #about {
