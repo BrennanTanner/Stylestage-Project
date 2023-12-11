@@ -227,7 +227,9 @@ h4 {
   height: 0px;
 }
 
-nav,
+
+.link-github,
+
 .skip-link {
   display: none;
 }
@@ -321,3 +323,4 @@ header {
 }
 
 /*# sourceMappingURL=style.css.map */
+

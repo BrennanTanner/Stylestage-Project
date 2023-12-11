@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300&family=Silkscreen&display=swap');
+
 @font-face {
   font-family: "Eagle";
   src: url("https://frindestown.duckdns.org/fonts/Web437_EagleSpCGA_Alt3.woff") format("woff");
@@ -217,4 +219,60 @@ header {
   display: grid;
   grid-template-columns: 100vw 100vw 100vw;
   grid-template-rows: 100vh;
+}
+
+/*# sourceMappingURL=style.css.map */
+
+
+
+/* */
+
+/* nav{
+  display: none;
+} */
+
+
+nav{
+  top: 7em;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  z-index: 1;
+  margin-left: -14em;
+}
+nav ul li{
+  width: 9em;
+  height: 3em;
+  list-style: none;
+  padding: 1em;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  font-family: 'Recursive', sans-serif;
+  font-family: 'Silkscreen', sans-serif;
+  font-size: 2em;
+}
+
+nav ul li:hover{
+  /* background-color:  #009900; */
+  opacity: .4;
+  transition: .2s;
+}
+
+nav ul li a:visited,
+nav ul li a:active,
+nav ul li a:link
+{
+  text-decoration: none;
+  color: #009900;
+}
+
+/* mobile view */ 
+@media screen and (max-width:700 ){
+
+  body > *{
+    display: flex;
+    flex-direction: column-reverse
+
+  }
 }
