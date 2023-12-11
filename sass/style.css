@@ -6,12 +6,27 @@
   font-family: "WebPlus";
   src: url("https://frindestown.duckdns.org/fonts/WebPlus_IBM_VGA_8x16.woff") format("woff");
 }
+:root {
+  --step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+  --step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+  --step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+  --step-2: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+  --step-3: clamp(1.9438rem, 1.7707rem + 0.8652vw, 2.4413rem);
+  --step-4: clamp(2.3325rem, 2.0823rem + 1.2511vw, 3.0519rem);
+  --step-5: clamp(2.7994rem, 2.4461rem + 1.7663vw, 3.815rem);
+}
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "WebPlus_IBM_VGA_8x16", Inconsolata, monospace;
+  font-family: "WebPlus", Inconsolata, monospace;
   color: #009900;
   overflow-x: scroll;
   margin: 0;
@@ -22,18 +37,14 @@ header > div,
 main footer,
 aside > div,
 body > footer > div {
-  position: relative;
   height: 100vh;
-  width: 133vh;
+  width: min(100vw, 133vh);
   margin: 0 auto;
+  overflow-x: hidden;
   background-color: black;
   background-image: radial-gradient(200% 250% at center, rgba(0, 50, 50, 0.75), black 100%);
-  color: #009900;
-  font-family: "WebPlus", Inconsolata, monospace;
-  font-size: 24px;
   text-shadow: 0 0 5px #707070;
   animation: textShadow 0.15s infinite;
-  overflow-y: scroll;
 }
 section::before,
 header > div::before,
@@ -44,9 +55,13 @@ body > footer > div::before {
   display: block;
   pointer-events: none;
   z-index: 10;
-  position: absolute;
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   height: 100vh;
-  width: 133vh;
+  width: min(100vw, 133vh);
   background-size: 100% 100%;
   background-image: url("https://github.com/Chafalleiro/retromator/blob/main/img/crt_green_mask.png?raw=true");
   background-repeat: no-repeat;
@@ -58,7 +73,7 @@ aside > div::after,
 body > footer > div::after {
   content: "";
   display: block;
-  width: 133vh;
+  width: min(100vw, 133vh);
   margin: 0 auto;
   height: 100px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 153, 0, 0.15) 50%, rgba(0, 0, 0, 0) 100%);
@@ -79,7 +94,7 @@ aside > div > p,
 aside > div > a,
 body > footer > div > p,
 body > footer > div > a {
-  padding: 0 3.5%;
+  padding: 0 max(4%, 20px);
 }
 section > h1,
 section > h2,
@@ -101,15 +116,21 @@ body > footer > div > h1,
 body > footer > div > h2,
 body > footer > div > h3,
 body > footer > div > h4 {
-  padding: 10px 3.5%;
+  padding: 10px max(4%, 20px);
 }
-section a,
-header > div a,
-main footer a,
-aside > div a,
-body > footer > div a {
-  color: #00ffc0;
-  text-shadow: 0 0 5px #a0a0a0;
+section > :first-child,
+header > div > :first-child,
+main footer > :first-child,
+aside > div > :first-child,
+body > footer > div > :first-child {
+  margin-top: -96vh;
+}
+section > :last-child,
+header > div > :last-child,
+main footer > :last-child,
+aside > div > :last-child,
+body > footer > div > :last-child {
+  padding-bottom: 30px;
 }
 
 h1,
@@ -119,7 +140,6 @@ h4 {
   font-family: "Eagle", Inconsolata, monospace;
   font-weight: normal;
   text-align: center;
-  font-size: 1.2em;
   padding-top: 15px;
 }
 
@@ -131,10 +151,10 @@ h4 {
 
 @keyframes bar {
   0% {
-    top: -200%;
+    top: -300%;
   }
   100% {
-    top: 100vh;
+    top: 100%;
   }
 }
 @keyframes textShadow {
@@ -215,21 +235,52 @@ h4 {
 }
 
 div > .link-github {
-  padding: 0 3.5%;
+  padding: 0 max(4%, 20px);
 }
 
 svg {
   height: 1em;
 }
+svg path {
+  fill: #009900;
+}
 
 ul,
 ol {
-  padding-inline-start: calc(3.5% + 40px);
+  padding-inline-start: calc(max(4%, 20px) + 40px);
+}
+
+p,
+a,
+li {
+  font-size: var(--step-0);
+}
+
+h1 {
+  font-size: var(--step-4);
+}
+
+h2 {
+  font-size: var(--step-3);
+}
+
+h3 {
+  font-size: var(--step-2);
+}
+
+h4 {
+  font-size: var(--step-1);
+}
+
+a {
+  color: #00ffc0;
+  text-shadow: 0 0 5px #707070;
+  animation: textShadow 0.15s infinite;
 }
 
 main footer a {
   display: block;
-  padding-left: 3.5%;
+  padding-left: max(4%, 20px);
   padding-top: 7px;
 }
 
@@ -252,7 +303,7 @@ header,
 }
 
 body {
-  grid-template-columns: 100vw 600vw 100vw 100vw 100vw;
+  grid-template-columns: 100vw 600vw repeat(3, 100vw);
 }
 
 header {
@@ -260,7 +311,7 @@ header {
 }
 
 #about {
-  grid-template-columns: 100vw 100vw;
+  grid-template-columns: repeat(2, 100vw);
 }
 
 #guidelines {
@@ -268,8 +319,7 @@ header {
 }
 
 #contribute {
-  grid-template-columns: 100vw 100vw 100vw;
-  grid-template-rows: 100vh;
+  grid-template-columns: repeat(3, 100vw);
 }
 
 /*# sourceMappingURL=style.css.map */

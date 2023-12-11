@@ -1,29 +1,46 @@
 $monitor-height: 100vh;
 // $monitor-width: 100%;
-$monitor-width: $monitor-height * 1.33;
+$monitor-width: min(100vw, $monitor-height * 1.33);
 // $monitor-margin: (100vw - $monitor-width) / 2;
-$monitor-content-padding: 3.5%;
+$monitor-content-padding: max(4%, 20px);
 $section-width: 100vw;
+$text-color: #009900;
 
 @font-face {
 	font-family: "Eagle";
 	src: url("https://frindestown.duckdns.org/fonts/Web437_EagleSpCGA_Alt3.woff")
 		format("woff");
 }
+
 @font-face {
 	font-family: "WebPlus";
 	src: url("https://frindestown.duckdns.org/fonts/WebPlus_IBM_VGA_8x16.woff")
 		format("woff");
 }
 
+:root {
+	--step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+	--step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+	--step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+	--step-1: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+	--step-2: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+	--step-3: clamp(1.9438rem, 1.7707rem + 0.8652vw, 2.4413rem);
+	--step-4: clamp(2.3325rem, 2.0823rem + 1.2511vw, 3.0519rem);
+	--step-5: clamp(2.7994rem, 2.4461rem + 1.7663vw, 3.815rem);
+}
+
 * {
 	box-sizing: border-box;
 }
 
+html {
+	scroll-behavior: smooth;
+	// scroll-snap-type: x mandatory;
+}
+
 body {
-	// overflow-y: hidden;
-	font-family: "WebPlus_IBM_VGA_8x16", Inconsolata, monospace;
-	color: #009900;
+	font-family: "WebPlus", Inconsolata, monospace;
+	color: $text-color;
 	overflow-x: scroll;
 	margin: 0;
 }
@@ -36,10 +53,11 @@ header > div,
 main footer,
 aside > div,
 body > footer > div {
-	position: relative;
+	// scroll-snap-align: center;
 	height: $monitor-height;
 	width: $monitor-width;
 	margin: 0 auto;
+	overflow-x: hidden;
 	// Set base background color so see-through parts are just more black.
 	background-color: black;
 	background-image: radial-gradient(
@@ -47,14 +65,9 @@ body > footer > div {
 		rgba(0, 50, 50, 0.75),
 		black 100%
 	);
-	color: #009900;
 
-	font-family: "WebPlus", Inconsolata, monospace;
-	font-size: 24px;
 	text-shadow: 0 0 5px #707070;
 	animation: textShadow 0.15s infinite;
-
-	overflow-y: scroll;
 
 	// Make it cover the entire screen without being interactible.
 	&::before {
@@ -62,12 +75,16 @@ body > footer > div {
 		display: block;
 		pointer-events: none;
 		z-index: 10;
-		position: absolute;
+		position: sticky;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
 		height: $monitor-height;
 		width: $monitor-width;
 		background-size: 100% 100%;
 		background-image: url("https://github.com/Chafalleiro/retromator/blob/main/img/crt_green_mask.png?raw=true");
-
+ main
 		background-repeat: no-repeat;
 	}
 
@@ -107,9 +124,12 @@ body > footer > div {
 		padding: 10px $monitor-content-padding;
 	}
 
-	a {
-		color: #00ffc0;
-		text-shadow: 0 0 5px #a0a0a0;
+	> :first-child {
+		margin-top: -96vh;
+	}
+
+	> :last-child {
+		padding-bottom: 30px;
 	}
 }
 
@@ -120,7 +140,6 @@ h4 {
 	font-family: "Eagle", Inconsolata, monospace;
 	font-weight: normal;
 	text-align: center;
-	font-size: 1.2em;
 	padding-top: 15px;
 }
 
@@ -133,10 +152,10 @@ h4 {
 
 @keyframes bar {
 	0% {
-		top: -200%;
+		top: -300%;
 	}
 	100% {
-		top: 100vh;
+		top: 100%;
 	}
 }
 
@@ -245,6 +264,10 @@ div > .link-github {
 
 svg {
 	height: 1em;
+
+	path {
+		fill: $text-color;
+	}
 }
 
 ul,
@@ -252,12 +275,39 @@ ol {
 	padding-inline-start: calc($monitor-content-padding + 40px);
 }
 
+p,
+a,
+li {
+	font-size: var(--step-0);
+}
+
+h1 {
+	font-size: var(--step-4);
+}
+
+h2 {
+	font-size: var(--step-3);
+}
+
+h3 {
+	font-size: var(--step-2);
+}
+
+h4 {
+	font-size: var(--step-1);
+}
+
+a {
+	color: #00ffc0;
+	text-shadow: 0 0 5px #707070;
+	animation: textShadow 0.15s infinite;
+}
+
 main footer a {
 	display: block;
 	padding-left: $monitor-content-padding;
 	padding-top: 7px;
 }
-
 
 // Set up each monitor
 body,
@@ -279,7 +329,7 @@ header,
 }
 
 body {
-	grid-template-columns: $section-width ($section-width * 6) $section-width $section-width $section-width;
+	grid-template-columns: $section-width ($section-width * 6) repeat(3, $section-width);
 }
 
 header {
@@ -287,7 +337,7 @@ header {
 }
 
 #about {
-	grid-template-columns: $section-width $section-width;
+	grid-template-columns: repeat(2, $section-width);
 }
 
 #guidelines {
@@ -295,9 +345,10 @@ header {
 }
 
 #contribute {
-	grid-template-columns: $section-width $section-width $section-width;
+	grid-template-columns: repeat(3, $section-width);
 }
 
-body > footer > div p:first-of-type {
-	padding-top: 10px;
-}
+// Fix the extra space.
+// h1 {
+// 	margin-top: -96vh;
+// }
