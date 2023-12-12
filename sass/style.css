@@ -32,6 +32,10 @@ body {
   margin: 0;
 }
 
+header, article, aside, footer {
+  background-color: #101313;
+}
+
 section,
 header > div,
 main footer,
@@ -64,6 +68,12 @@ body > footer > div::before {
   width: min(100vw, 133vh);
   background-size: 100% 100%;
   background-image: url("https://github.com/Chafalleiro/retromator/blob/main/img/crt_green_mask.png?raw=true");
+}
+section main,
+header > div main,
+main footer main,
+aside > div main,
+body > footer > div main {
   background-repeat: no-repeat;
 }
 section::after,
@@ -227,9 +237,7 @@ h4 {
   height: 0px;
 }
 
-
-.link-github,
-
+nav,
 .skip-link {
   display: none;
 }
@@ -323,4 +331,3 @@ header {
 }
 
 /*# sourceMappingURL=style.css.map */
-

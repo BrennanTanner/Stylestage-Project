@@ -44,7 +44,7 @@ body {
 	overflow-x: scroll;
 	margin: 0;
 }
-header, article{
+header, article, aside, footer{
 	background-color:#101313;
 }
 
@@ -84,7 +84,8 @@ body > footer > div {
 		width: $monitor-width;
 		background-size: 100% 100%;
 		background-image: url("https://github.com/Chafalleiro/retromator/blob/main/img/crt_green_mask.png?raw=true");
- main
+	}
+ main{
 		background-repeat: no-repeat;
 	}
 
