@@ -34,6 +34,7 @@ $text-color: #009900;
 html {
 	scroll-behavior: smooth;
 	scroll-snap-type: x proximity;
+	overflow-y: hidden;
 }
 
 body {
@@ -41,8 +42,6 @@ body {
 	color: $text-color;
 	overflow-x: scroll;
 	margin: 0;
-}
-header, article{
 	background-color:#101313;
 }
 
@@ -248,8 +247,7 @@ h4 {
 	height: 0px;
 }
 
-nav,
-.skip-link {
+nav {
    display: none;
 }
 
@@ -310,9 +308,9 @@ body,
 main,
 main > .container,
 article {
-   display: flex;
-   overflow-x: scroll;
-   width: fit-content;
+	display: flex;
+	overflow-x: scroll;
+	width: fit-content;
 }
 
 body,
@@ -342,4 +340,20 @@ header {
 
 #contribute {
 	grid-template-columns: repeat(3, $section-width);
+}
+
+.skip-link {
+	display: block;
+	position: fixed;
+	top: -1000px;
+	left: 0;
+	z-index: 15;
+	width: fit-content;
+	padding: 0.8em;
+	background-color: #122418;
+	text-decoration: none;
+}
+
+.skip-link:focus {
+	top: 0;
 }
