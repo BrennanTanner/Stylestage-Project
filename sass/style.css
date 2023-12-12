@@ -33,6 +33,10 @@ body {
   margin: 0;
 }
 
+header, article {
+  background-color: #101313;
+}
+
 section,
 header > div,
 main footer,
@@ -229,9 +233,7 @@ h4 {
   height: 0px;
 }
 
-
-.link-github,
-
+nav,
 .skip-link {
   display: none;
 }
@@ -325,4 +327,3 @@ header {
 }
 
 /*# sourceMappingURL=style.css.map */
-
