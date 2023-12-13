@@ -1,54 +1,49 @@
-// stylelint-disable no-descending-specificity
+html {
+	scroll-behavior: smooth;
+	overflow-y: hidden;
+}
+
 body {
-  background-color: var(--color-background);
-  color: var(--color-text);
-  font-family: var(--font-family);
+	overflow-x: scroll;
+	margin: 0;
+	background-color:#101313;
 }
 
-main {
-  padding-top: 5vh;
-  padding-bottom: 5vh;
-
-  &:focus {
-    outline: none;
-  }
-
-  h3 {
-    color: var(--color-primary);
-  }
-}
-
+// Set up each monitor
+body,
+main,
+main > .container,
 article {
-  section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-  }
+	display: flex;
+	overflow-x: scroll;
+	width: fit-content;
 }
 
-article,
-.page-footer,
-#styles {
-  .container {
-    width: 100%;
-    max-width: 80ch;
-    margin-right: auto;
-    margin-left: auto;
-  }
+body,
+header,
+#about,
+#guidelines,
+#contribute {
+	display: grid;
+	grid-template-rows: 100vh;
 }
 
-article,
-#styles {
-  padding: 1rem;
+body {
+	grid-template-columns: $section-width ($section-width * 6) repeat(3, $section-width);
 }
 
-.page-footer ul,
-.features {
-  display: grid;
-  margin: 0 0 2rem;
-  padding: 0;
-  grid-gap: 1em;
-  list-style: none;
+header {
+	grid-template-columns: $section-width;
+}
+
+#about {
+	grid-template-columns: repeat(2, $section-width);
+}
+
+#guidelines {
+	grid-template-columns: $section-width;
+}
+
+#contribute {
+	grid-template-columns: repeat(3, $section-width);
 }
