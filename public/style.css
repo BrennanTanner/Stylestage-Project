@@ -1,96 +1,63 @@
-@font-face {
-  font-family: "Eagle";
-  src: url("https://frindestown.duckdns.org/fonts/Web437_EagleSpCGA_Alt3.woff") format("woff");
-}
-@font-face {
-  font-family: "WebPlus";
-  src: url("https://frindestown.duckdns.org/fonts/WebPlus_IBM_VGA_8x16.woff") format("woff");
-}
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen&display=swap");
 * {
   box-sizing: border-box;
 }
 
-body {
-  font-family: "WebPlus_IBM_VGA_8x16", Inconsolata, monospace;
-  color: #009900;
-  overflow-x: scroll;
+:root {
+  --step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+  --step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+  --step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+  --step-2: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+  --step-3: clamp(1.9438rem, 1.7707rem + 0.8652vw, 2.4413rem);
+  --step-4: clamp(2.3325rem, 2.0823rem + 1.2511vw, 3.0519rem);
+  --step-5: clamp(2.7994rem, 2.4461rem + 1.7663vw, 3.815rem);
 }
 
-section,
-header > div,
-main footer,
-aside > div,
-body > footer {
-  position: relative;
-  height: 100vh;
-  width: 133vh;
-  margin: 0 auto;
-  background-color: black;
-  background-image: radial-gradient(200% 250% at center, rgba(0, 50, 50, 0.75), black 100%);
+body {
+  font-family: "Silkscreen", sans-serif;
   color: #009900;
-  font-family: "WebPlus", Inconsolata, monospace;
-  font-size: 24px;
-  text-shadow: 0 0 5px #707070;
-  animation: textShadow 0.15s infinite;
-  overflow-y: scroll;
-}
-section::before,
-header > div::before,
-main footer::before,
-aside > div::before,
-body > footer::before {
-  content: "";
-  display: block;
-  pointer-events: none;
-  z-index: 10;
-  position: absolute;
-  height: 100vh;
-  width: 133vh;
-  background-size: 100% 100%;
-  background-image: url("https://github.com/Chafalleiro/retromator/blob/main/img/crt_green_mask.png?raw=true");
-  background-repeat: no-repeat;
-}
-section::after,
-header > div::after,
-main footer::after,
-aside > div::after,
-body > footer::after {
-  content: "";
-  display: block;
-  width: 133vh;
-  margin: 0 auto;
-  height: 100px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 153, 0, 0.15) 50%, rgba(0, 0, 0, 0) 100%);
-  position: absolute;
-  top: 0;
-  pointer-events: none;
-  z-index: 9;
-  animation: bar 18s infinite;
-  animation-timing-function: linear;
-}
-section > p,
-header > div > p,
-main footer > p,
-aside > div > p,
-body > footer > p {
-  padding: 0 3.5%;
-}
-section a,
-header > div a,
-main footer a,
-aside > div a,
-body > footer a {
-  color: #00ffc0;
-  text-shadow: 0 0 5px #a0a0a0;
 }
 
 h1,
-h2 {
-  font-family: "Eagle", Inconsolata, monospace;
+h2,
+h3,
+h4 {
+  font-family: "Press Start 2P", sans-serif;
+  color: #009900;
   font-weight: normal;
+  text-shadow: 0 0 5px #707070;
+  animation: textShadow 0.15s infinite;
   text-align: center;
-  font-size: 1.2em;
   padding-top: 15px;
+}
+
+h1 {
+  font-size: var(--step-4);
+}
+
+h2 {
+  font-size: var(--step-3);
+}
+
+h3 {
+  font-size: var(--step-2);
+}
+
+h4 {
+  font-size: var(--step-1);
+}
+
+p,
+a,
+li {
+  font-size: var(--step-0);
+  text-shadow: 0 0 5px #707070;
+  animation: textShadow 0.15s infinite;
+}
+
+a {
+  color: #00ffc0;
 }
 
 ::selection {
@@ -99,14 +66,6 @@ h2 {
   text-shadow: none;
 }
 
-@keyframes bar {
-  0% {
-    top: -200%;
-  }
-  100% {
-    top: 100vh;
-  }
-}
 @keyframes textShadow {
   0% {
     text-shadow: 0.4389924193px 0 1px rgba(0, 30, 255, 0.5), -0.4389924193px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
@@ -172,13 +131,15 @@ h2 {
     text-shadow: 2.6208764474px 0 1px rgba(0, 30, 255, 0.5), -2.6208764474px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
   }
 }
-::-webkit-scrollbar {
-  width: 0px;
+html {
+  scroll-behavior: smooth;
+  overflow-y: hidden;
 }
 
-.link-github,
-.skip-link {
-  display: none;
+body {
+  overflow-x: scroll;
+  margin: 0;
+  background-color: #101313;
 }
 
 body,
@@ -190,31 +151,206 @@ article {
   width: fit-content;
 }
 
-body {
+body,
+header,
+#about,
+#guidelines,
+#contribute {
   display: grid;
-  grid-template-columns: 100vw 600vw 100vw 100vw 100vw;
+  grid-template-rows: 100vh;
+}
+
+body {
+  grid-template-columns: 100vw 600vw repeat(3, 100vw);
 }
 
 header {
-  display: grid;
   grid-template-columns: 100vw;
-  grid-template-rows: 100vh;
 }
 
 #about {
-  display: grid;
-  grid-template-columns: 100vw 100vw;
-  grid-template-rows: 100vh;
+  grid-template-columns: repeat(2, 100vw);
 }
 
 #guidelines {
-  display: grid;
   grid-template-columns: 100vw;
-  grid-template-rows: 100vh;
 }
 
 #contribute {
-  display: grid;
-  grid-template-columns: 100vw 100vw 100vw;
-  grid-template-rows: 100vh;
+  grid-template-columns: repeat(3, 100vw);
+}
+
+header h2 {
+  font-size: var(--step-1);
+}
+
+#guidelines h2 {
+  font-size: var(--step-2);
+}
+
+#contribute h2 {
+  font-size: var(--step-2);
+}
+
+#files h3 {
+  font-size: var(--step-1);
+}
+
+ul,
+ol {
+  padding-inline-start: calc($monitor-content-padding + 40px);
+}
+
+html {
+  scroll-snap-type: x proximity;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+section,
+header > div,
+main footer,
+aside > div,
+body > footer > div {
+  scroll-snap-align: center;
+  height: 100vh;
+  width: min(100vw, 133vh);
+  margin: 0 auto;
+  overflow-x: hidden;
+  background-color: black;
+  background-image: radial-gradient(200% 250% at center, rgba(0, 50, 50, 0.75), black 100%);
+}
+section::before,
+header > div::before,
+main footer::before,
+aside > div::before,
+body > footer > div::before {
+  content: "";
+  display: block;
+  pointer-events: none;
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  width: min(100vw, 133vh);
+  background-size: 100% 100%;
+  background-image: url("https://github.com/Chafalleiro/retromator/blob/main/img/crt_green_mask.png?raw=true");
+  background-repeat: no-repeat;
+}
+section::after,
+header > div::after,
+main footer::after,
+aside > div::after,
+body > footer > div::after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: min(100vw, 133vh);
+  height: 100px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 153, 0, 0.15) 50%, rgba(0, 0, 0, 0) 100%);
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  z-index: 9;
+  animation: bar 18s infinite;
+  animation-timing-function: linear;
+}
+section > p,
+section > a,
+header > div > p,
+header > div > a,
+main footer > p,
+main footer > a,
+aside > div > p,
+aside > div > a,
+body > footer > div > p,
+body > footer > div > a {
+  padding: 0 max(4%, 20px);
+}
+section > h1,
+section > h2,
+section > h3,
+section > h4,
+header > div > h1,
+header > div > h2,
+header > div > h3,
+header > div > h4,
+main footer > h1,
+main footer > h2,
+main footer > h3,
+main footer > h4,
+aside > div > h1,
+aside > div > h2,
+aside > div > h3,
+aside > div > h4,
+body > footer > div > h1,
+body > footer > div > h2,
+body > footer > div > h3,
+body > footer > div > h4 {
+  padding: 10px max(4%, 20px);
+}
+section > :first-child,
+header > div > :first-child,
+main footer > :first-child,
+aside > div > :first-child,
+body > footer > div > :first-child {
+  margin-top: -96vh;
+}
+section > :last-child,
+header > div > :last-child,
+main footer > :last-child,
+aside > div > :last-child,
+body > footer > div > :last-child {
+  padding-bottom: 30px;
+}
+
+@keyframes bar {
+  0% {
+    top: -300%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+nav {
+  display: none;
+}
+
+.skip-link {
+  display: block;
+  position: fixed;
+  top: -1000px;
+  left: 0;
+  z-index: 15;
+  width: fit-content;
+  padding: 0.8em;
+  background-color: #122418;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+div > .link-github {
+  padding: 0 max(4%, 20px);
+}
+
+svg {
+  height: 1em;
+}
+svg path {
+  fill: #009900;
+}
+
+main footer a {
+  display: block;
+  padding-left: max(4%, 20px);
+  padding-top: 7px;
 }
